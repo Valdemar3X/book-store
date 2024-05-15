@@ -4,6 +4,7 @@ import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import mate.academy.bookstore.dto.user.UserRegistrationRequestDto;
 import mate.academy.bookstore.dto.user.UserResponseDto;
+import mate.academy.bookstore.exception.EntityNotFoundException;
 import mate.academy.bookstore.exception.RegistrationException;
 import mate.academy.bookstore.mapper.UserMapper;
 import mate.academy.bookstore.model.Role;
@@ -43,5 +44,10 @@ public class UserServiceImpl implements UserService {
         shoppingCart.setUser(savedUser);
         shoppingCartRepository.save(shoppingCart);
         return mapper.toUserResponse(savedUser);
+    }
+    @Override
+    public User findById(Long id) {
+        return userRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Can't find user by id: " + id));
     }
 }
