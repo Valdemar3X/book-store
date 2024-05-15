@@ -94,8 +94,7 @@ public class OrderServiceImpl implements OrderService {
         return orderItemMapper.toDto(
                 orderItemRepository.findByOrder_IdAndId(orderId, itemId));
     }
-   @Transactional
-    private BigDecimal countTotal(Set<CartItem> cartItems) {
+y    private BigDecimal countTotal(Set<CartItem> cartItems) {
         return BigDecimal.valueOf(cartItems.stream()
                 .mapToDouble(ci ->
                         ci.getQuantity() * ci.getBook().getPrice().doubleValue())
