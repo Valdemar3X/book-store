@@ -1,12 +1,11 @@
 package mate.academy.bookstore.dto.order;
 
-import lombok.Data;
-import mate.academy.bookstore.dto.orderitem.OrderItemDto;
-import mate.academy.bookstore.model.Order;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
+import lombok.Data;
+import mate.academy.bookstore.dto.orderitem.OrderItemDto;
+import mate.academy.bookstore.model.Order;
 
 @Data
 public class OrderResponseDto {

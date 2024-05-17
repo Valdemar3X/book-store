@@ -8,6 +8,5 @@ import mate.academy.bookstore.model.User;
 public interface UserService {
     UserResponseDto register(UserRegistrationRequestDto request) throws RegistrationException;
 
-
     User findById(Long id);
 }

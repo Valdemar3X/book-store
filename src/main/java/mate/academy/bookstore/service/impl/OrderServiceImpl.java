@@ -1,16 +1,20 @@
 package mate.academy.bookstore.service.impl;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import mate.academy.bookstore.dto.order.CreateOrderRequestDto;
 import mate.academy.bookstore.dto.order.OrderResponseDto;
 import mate.academy.bookstore.dto.order.UpdateOrderDto;
 import mate.academy.bookstore.dto.orderitem.OrderItemDto;
-import mate.academy.bookstore.dto.shopingcart.ShoppingCartDto;
 import mate.academy.bookstore.exception.EntityNotFoundException;
+import mate.academy.bookstore.mapper.CartItemMapper;
 import mate.academy.bookstore.mapper.OrderItemMapper;
 import mate.academy.bookstore.mapper.OrderMapper;
 import mate.academy.bookstore.mapper.ShoppingCartMapper;
-import mate.academy.bookstore.model.Book;
 import mate.academy.bookstore.model.CartItem;
 import mate.academy.bookstore.model.Order;
 import mate.academy.bookstore.model.OrderItem;
@@ -22,17 +26,9 @@ import mate.academy.bookstore.repository.shopingcart.ShoppingCartRepository;
 import mate.academy.bookstore.service.OrderService;
 import mate.academy.bookstore.service.ShoppingCartService;
 import mate.academy.bookstore.service.UserService;
-import org.hibernate.Hibernate;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -46,12 +42,12 @@ public class OrderServiceImpl implements OrderService {
     private final ShoppingCartMapper shoppingCartMapper;
     private final OrderItemMapper orderItemMapper;
     private final Order order = new Order();
+    private final CartItemMapper cartItemMapper;
 
     @Override
     @Transactional
     public void createUserOrder(Long userId, CreateOrderRequestDto requestDto) {
-        ShoppingCartDto dto = shoppingCartService.getShoppingCart(userId);
-        ShoppingCart shoppingCart = shoppingCartMapper.toModel(dto);
+        ShoppingCart shoppingCart = shoppingCartService.getShoppingCartModel(userId);
         User user = userService.findById(userId);
         order.setUser(user);
         order.setStatus(Order.Status.PENDING);
@@ -94,7 +90,8 @@ public class OrderServiceImpl implements OrderService {
         return orderItemMapper.toDto(
                 orderItemRepository.findByOrder_IdAndId(orderId, itemId));
     }
-y    private BigDecimal countTotal(Set<CartItem> cartItems) {
+
+    private BigDecimal countTotal(Set<CartItem> cartItems) {
         return BigDecimal.valueOf(cartItems.stream()
                 .mapToDouble(ci ->
                         ci.getQuantity() * ci.getBook().getPrice().doubleValue())
@@ -114,5 +111,4 @@ y    private BigDecimal countTotal(Set<CartItem> cartItems) {
         }
         return orderItems;
     }
-
 }

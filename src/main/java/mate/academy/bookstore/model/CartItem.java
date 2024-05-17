@@ -1,6 +1,5 @@
 package mate.academy.bookstore.model;
 
-import jakarta.persistence.Cacheable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,7 +35,7 @@ public class CartItem {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToOne //(fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 

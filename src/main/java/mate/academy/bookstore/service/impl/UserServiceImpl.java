@@ -45,6 +45,7 @@ public class UserServiceImpl implements UserService {
         shoppingCartRepository.save(shoppingCart);
         return mapper.toUserResponse(savedUser);
     }
+
     @Override
     public User findById(Long id) {
         return userRepository.findById(id).orElseThrow(
