@@ -1,6 +1,11 @@
 package mate.academy.bookstore.dto.category;
 
-public record CreateCategoryRequestDto(
-        String name,
-        String description) {
+import lombok.Data;
+import lombok.experimental.Accessors;
+
+@Data
+@Accessors(chain = true)
+public class CreateCategoryRequestDto {
+    private String name;
+    private String description;
 }
