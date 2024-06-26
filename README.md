@@ -24,7 +24,7 @@ Role Division:
    .
    ├── .github/workflows        
    ├── .mvn/wrapper             
-   ├── src                      # Source files
+   ├── src     # Source files
    │   ├── main
    │   │   ├── java
    │   │   │   └── project
