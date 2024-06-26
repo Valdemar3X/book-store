@@ -22,52 +22,50 @@ Role Division:
    Update order status to reflect stages such as "pending" or "delivered."
    📂 File Structure:
    .
-   ├── .github/workflows        
-   ├── .mvn/wrapper             
-   ├── src     # Source files
-   │   ├── main
-   │   │   ├── java
-   │   │   │   └── project
-   │   │   │       └── mybookshop
-   │   │   │           ├── config          # Configuration classes
-   │   │   │           ├── controller      # Request handling controllers
-   │   │   │           ├── dto             # Data Transfer Objects
-   │   │   │           ├── exceptions      # Custom exception classes
-   │   │   │           ├── mapper          # Mapping between entities and DTOs
-   │   │   │           ├── model           # Entity classes representing database tables
-   │   │   │           ├── repository      # Repository interfaces for database interactions
-   │   │   │           ├── security        # Security configurations and components
-   │   │   │           ├── service         # Business logic and service classes
-   │   │   │           ├── validation      # Custom validation logic and annotations
-   │   │   │           └── MyBookShopApplication.java  # Main application class
-   │   │   ├── resources
-   │   │   │   └── db
-   │   │   │       └── changelog
-   └── changes                
-   │   │   │           └── db.changelog-master.yaml   # Liquibase changelog file
-   │   │   │       └── application.properties  # Configuration properties for the application
-   │   ├── test
-   │   │   └── java
-   │   │       └── project.mybookshop      # Test cases for my project  
-   │   │           ├── config          
-   │   │           ├── controller      
-   │   │           ├── service      
-   │   │           ├── repository
-   │   │           ├── util
-   │   │           └── MyBookShopApplication.java  
-   │   │── resources
-   │   │       └── database            # Database query files for tests
-   │   │   └── application.properties  # Configuration properties for test cases
-   │   │               
-   ├── .env                     # Environment configuration file
-   ├── .gitignore               
-   ├── Dockerfile               # Docker configuration file
-   ├── README.md                # Project documentation
-   ├── checkstyle.xml           # Checkstyle configuration file
-   ├── docker-compose.yml       # Docker Compose configuration file
-   ├── mvnw                     
-   ├── mvnw.cmd                 
-   ├── pom.xml                  
+   ├── .github/workflows
+├── .mvn/wrapper
+├── src # Source files
+│ ├── main
+│ │ ├── java
+│ │ │ └── project
+│ │ │ └── mybookshop
+│ │ │ ├── config # Configuration classes
+│ │ │ ├── controller # Request handling controllers
+│ │ │ ├── dto # Data Transfer Objects
+│ │ │ ├── exceptions # Custom exception classes
+│ │ │ ├── mapper # Mapping between entities and DTOs
+│ │ │ ├── model # Entity classes representing database tables
+│ │ │ ├── repository # Repository interfaces for database interactions
+│ │ │ ├── security # Security configurations and components
+│ │ │ ├── service # Business logic and service classes
+│ │ │ ├── validation # Custom validation logic and annotations
+│ │ │ └── MyBookShopApplication.java # Main application class
+│ │ ├── resources
+│ │ │ └── db
+│ │ │ └── changelog
+│ │ │ └── db.changelog-master.yaml # Liquibase changelog file
+│ │ │ └── application.properties # Configuration properties for the application
+│ ├── test
+│ │ └── java
+│ │ └── project.mybookshop # Test cases for my project
+│ │ ├── config
+│ │ ├── controller
+│ │ ├── service
+│ │ ├── repository
+│ │ ├── util
+│ │ └── MyBookShopApplication.java
+│ │── resources
+│ │ └── database # Database query files for tests
+│ │ └── application.properties # Configuration properties for test cases
+├── .env # Environment configuration file
+├── .gitignore
+├── Dockerfile # Docker configuration file
+├── README.md # Project documentation
+├── checkstyle.xml # Checkstyle configuration file
+├── docker-compose.yml # Docker Compose configuration file
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
    💻 Technologies:
    Java v.17
    Spring Boot v.3.2.3
